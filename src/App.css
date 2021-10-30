@@ -1,3 +1,6 @@
+@import url('./components/Navbarcomponent/navbar.css');
+@import url('./components/moviecard/moviecard.css');
+@import url('./pages/Moviedetails/details.css');
 .App {
   text-align: center;
 }
