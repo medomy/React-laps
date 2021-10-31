@@ -5,6 +5,7 @@ import Movies from './pages/movies/movies';
 import Detais from './pages/Moviedetails/detais';
 import Home from './pages/home/home';
 import Errorpage from './pages/404/404';
+import Favs from './pages/Favouritespage/Favs';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/' exact component={Home} />
         <Route path='/movies' exact component={Movies} />
         <Route path='/details/:id' exact component={Detais} />
+        <Route path='/favs' exact component={Favs} />
         <Route path='*' exact component={Errorpage} />
         
       </Switch>

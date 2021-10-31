@@ -2,8 +2,11 @@ import React from "react"
 import { Navbar, Container, Nav, Button,Form,FormControl } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {Count,AddToFavourites} from '../../../src/store/Action';
+import { useDispatch, useSelector } from "react-redux";
 export default function Navbarcomponent() {
     let search ;
+    let counter = useSelector(state=> state.Counter);
     function InputVal(e){
         console.log(e.target.value);
         search = e.target.value;
@@ -25,6 +28,8 @@ export default function Navbarcomponent() {
                         <Nav className="me-auto">
                         <Link to="/" className="mx-2">Home</Link>
                         <Link to="/movies" className="mx-2">Movies</Link>
+                        <Link to="/favs" className="mx-2">Favourites</Link>
+                        <Link to="/favs" className="mx-2">{counter}</Link>
                             <Nav.Link ></Nav.Link>
                             <Nav.Link ></Nav.Link>
                         </Nav>
