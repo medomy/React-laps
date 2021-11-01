@@ -8,10 +8,19 @@ import Errorpage from './pages/404/404';
 import Favs from './pages/Favouritespage/Favs';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+// importing context
+import {Langprovider,Langfeature} from '../src/contexts/Languagecontext';
+import { useState } from 'react';
+
+
+
+
 
 function App() {
+  const [lang,setlang] = useState("en");
   return (
     <>
+    <Langprovider value = {{lang,setlang}}>
     <Router>
       <Navbarcomponent></Navbarcomponent>
       <Switch>
@@ -23,6 +32,7 @@ function App() {
         
       </Switch>
     </Router>
+    </Langprovider>
     </>
   );
 }

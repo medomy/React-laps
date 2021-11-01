@@ -4,7 +4,7 @@ import { Count, AddToFavourites } from '../../../src/store/Action';
 import { useDispatch, useSelector } from "react-redux";
 export default function Favs(props) {
     // getting the array of favourites from redux
-    let favs = useSelector(state => state.Favourites);
+    let favs = useSelector(state => state.Favourites.Favourites);
     let hist =useHistory();
     console.log(hist);
     /*function sendMovie() {

@@ -1,22 +1,34 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Navbar, Container, Nav, Button,Form,FormControl } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import {Count,AddToFavourites} from '../../../src/store/Action';
 import { useDispatch, useSelector } from "react-redux";
+import { Langfeature } from "../../contexts/Languagecontext";
 export default function Navbarcomponent() {
     let search ;
-    let counter = useSelector(state=> state.Counter);
+    let counter = useSelector(state=> state.Favourites.Counter);
+    // onchange function :
     function InputVal(e){
         console.log(e.target.value);
         search = e.target.value;
     }
+    // search button function:
     function MovieSearch(){
         console.log(search);
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4cef01add3ed74048591b83881eee0c9&query=${search}`)
         .then((res)=>{console.log(res.data.results)})
         .catch((err)=>alert(err));
     }
+
+    //using language context :
+    const {lang,setlang} = useContext(Langfeature);
+
+    // function to change language onclick
+    function changeLang(){
+        setlang(lang === "en" ? "ar" : "en");
+    }
+
     return <>
         <div className="row navbar-container">
             <Navbar bg="dark" expand="lg">
@@ -30,7 +42,7 @@ export default function Navbarcomponent() {
                         <Link to="/movies" className="mx-2">Movies</Link>
                         <Link to="/favs" className="mx-2">Favourites</Link>
                         <Link to="/favs" className="mx-2">{counter}</Link>
-                            <Nav.Link ></Nav.Link>
+                            <Nav.Link onClick={()=> changeLang()}  >{lang}</Nav.Link>
                             <Nav.Link ></Nav.Link>
                         </Nav>
                         <Form className="d-flex">

@@ -5,6 +5,8 @@ import axios from "axios";
 import { useHistory } from "react-router";
 import { Pagination } from "react-bootstrap";
 import { PageItem } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { GetMovs } from "../../store/getmoviesaction";
 export default function Movies(props) {
     console.log(props);
     const historia = useHistory();
@@ -12,6 +14,10 @@ export default function Movies(props) {
     const [Movies, setMovies] = useState([]);
     let [counter ,setcounter] = useState(1);
 
+
+    // used with api redux thunk call
+    //let movieslist = useSelector((state)=> state.Movies.movieslist); 
+    //let dispatch = useDispatch();
     function getFirstPage(){
         setcounter(1);
         historia.push(`/movies?page=${counter}`);
@@ -51,7 +57,14 @@ export default function Movies(props) {
             })
             .catch((err) => console.log(err))
 
+         // used with redux call api thunk    
+        //dispatch(GetMovs());   
+        
+
     }, [counter])
+
+
+    //console.log(movieslist);
 
     return <>
         <div className="row justify-content-evenly">

@@ -11,9 +11,9 @@ export default function Detais(props) {
    // console.log(props);
    // setting the movie i get from the search api (my movie)
     const [movie, setmovie]   = useState({});
-    //getting the counter and favourites array from redux store
-    let counter = useSelector(state => state.Counter);
-    let favs = useSelector(state => state.Favourites);
+    //getting the counter and favourites array from redux store (used combined reducers)
+    let counter = useSelector(state => state.Favourites.Counter);
+    let favs = useSelector(state => state.Favourites.Favourites);
     // using dispatch to fire changes on my global variables
     let Dispatch = useDispatch();
     //let favsarra = [];
